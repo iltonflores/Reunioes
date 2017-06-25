@@ -139,6 +139,59 @@ namespace reunioes
             comando.ExecuteNonQuery();
 
         }
-     
+
+
+        public Guid SqlCommandInsereFilial(SqlConnection conexao, Filial filial)
+        {
+            SqlCommand comando = new SqlCommand(null, conexao);
+
+            // Create and prepare an SQL statement.
+            comando.CommandText =
+                "INSERT INTO Filial (nm_filial, nr_cnpj, id_endereco) " +
+                "OUTPUT INSERTED.id_filial " +
+                "VALUES (@nm_filial, @nr_cnpj, @id_endereco)";
+            SqlParameter nm_filial = new SqlParameter("@nm_filial", SqlDbType.Text, 200);
+            SqlParameter nr_cnpj = new SqlParameter("@nr_cnpj", SqlDbType.BigInt, 0);
+            SqlParameter id_endereco = new SqlParameter("@id_endereco", SqlDbType.UniqueIdentifier, 0);
+
+            nm_filial.Value = filial.nm_filial;
+            nr_cnpj.Value = filial.nr_cnpj;
+            id_endereco.Value = filial.id_endereco;
+            comando.Parameters.Add(nm_filial);
+            comando.Parameters.Add(nr_cnpj);
+            comando.Parameters.Add(id_endereco);
+
+            Guid id_filial = (Guid)comando.ExecuteScalar();
+
+            return id_filial;
+
+        }
+
+        public void SqlCommandAtualizaFilial(SqlConnection conexao, Filial filial)
+        {
+            SqlCommand comando = new SqlCommand(null, conexao);
+
+            // Create and prepare an SQL statement.
+            comando.CommandText =
+                "UPDATE Filial SET nm_filial=@nm_filial, nr_cnpj=@nr_cnpj, id_endereco=@id_endereco " +
+                "WHERE id_filial = @id_filial";
+            SqlParameter nm_filial = new SqlParameter("@nm_filial", SqlDbType.Text, 200);
+            SqlParameter nr_cnpj = new SqlParameter("@nr_cnpj", SqlDbType.BigInt, 0);
+            SqlParameter id_endereco = new SqlParameter("@id_endereco", SqlDbType.UniqueIdentifier, 0);
+            SqlParameter id_filial = new SqlParameter("@id_filial", SqlDbType.UniqueIdentifier, 0);
+
+            nm_filial.Value = filial.nm_filial;
+            nr_cnpj.Value = filial.nr_cnpj;
+            id_endereco.Value = filial.id_endereco;
+            id_filial.Value = filial.id_filial;
+            comando.Parameters.Add(nm_filial);
+            comando.Parameters.Add(nr_cnpj);
+            comando.Parameters.Add(id_endereco);
+            comando.Parameters.Add(id_filial);
+
+            comando.Prepare();
+            comando.ExecuteNonQuery();
+
+        }
     }
 }

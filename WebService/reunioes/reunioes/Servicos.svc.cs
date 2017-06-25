@@ -24,6 +24,14 @@ namespace reunioes
             return retorno;
         }
 
+        public Retorno CadastraFilial(Stream fil)
+        {
+            Cadastro cadFilial = new Cadastro();
+            Retorno retorno = cadFilial.Filial(fil);
+
+            return retorno;
+        }
+
         public List<Endereco> GetEnderecos(Guid id_endereco, String nm_cidade, int nr_cep, String nm_estado)
         {
             Consulta conGetEnderecos = new Consulta();
@@ -33,10 +41,27 @@ namespace reunioes
             return enderecos;
         }
 
+        public List<Filial> GetFiliais(Guid id_filial, Int64 nr_cnpj)
+        {
+            Consulta conGetFiliais = new Consulta();
+
+            List<Filial> filiais = conGetFiliais.GetFiliais(id_filial, nr_cnpj);
+
+            return filiais;
+        }
+
         public Retorno ApagaEndereco(Guid id_endereco, Guid id_filial)
         {
             Remove remEndereco = new Remove();
             Retorno retorno = remEndereco.Endereco(id_endereco, id_filial);
+
+            return retorno;
+        }
+
+        public Retorno ApagaFilial(Guid id_filial)
+        {
+            Remove remFilial = new Remove();
+            Retorno retorno = remFilial.Filial(id_filial);
 
             return retorno;
         }

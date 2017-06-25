@@ -1,5 +1,4 @@
 C:\Users\Junior\Desktop\Banana\Reunioes\WebService\reunioes\reunioes\bin\reunioes.dll
 C:\Users\Junior\Desktop\Banana\Reunioes\WebService\reunioes\reunioes\bin\reunioes.pdb
-C:\Users\Junior\Desktop\Banana\Reunioes\WebService\reunioes\reunioes\obj\Debug\reunioes.csprojResolveAssemblyReference.cache
 C:\Users\Junior\Desktop\Banana\Reunioes\WebService\reunioes\reunioes\obj\Debug\reunioes.dll
 C:\Users\Junior\Desktop\Banana\Reunioes\WebService\reunioes\reunioes\obj\Debug\reunioes.pdb

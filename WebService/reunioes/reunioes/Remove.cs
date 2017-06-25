@@ -25,5 +25,22 @@ namespace reunioes
             return retorno;
         }
 
+        public Retorno Filial(Guid id_filial)
+        {
+            RemoveBancoDados banco = new RemoveBancoDados();
+
+            SqlConnection conexao = banco.abrirConexao();
+
+            banco.RemoveFiliais(conexao, id_filial);
+
+            banco.fecharConexao(conexao);
+
+            Retorno retorno = new Retorno();
+            retorno.CodigoRetorno = 1;
+            retorno.DescricaoRetorno = "Filial removida";
+
+            return retorno;
+        }
+
     }
 }

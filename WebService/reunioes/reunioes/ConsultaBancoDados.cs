@@ -227,5 +227,56 @@ namespace reunioes
                 }
             }
         }
+
+        public List<Filial> SqlCommandConsultaFilial(SqlConnection conexao, Guid id_filial, Int64 nr_cnpj)
+        {
+            SqlDataReader reader = null;
+
+            List<Filial> filiais = new List<Filial>();
+            try
+            {
+
+                SqlCommand comando = new SqlCommand(null, conexao);
+
+                comando.CommandText = "SELECT * FROM Filial";
+
+                comando = SqlAddParametro(conexao, comando, id_filial, "id_filial");
+                comando = SqlAddParametro(conexao, comando, nr_cnpj, "nr_cnpj");
+
+                reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Filial filial = new Filial();
+
+                    filial.id_filial = reader.GetGuid(reader.GetOrdinal("id_filial"));
+                    filial.nm_filial = reader["nm_filial"].ToString();
+                    filial.nr_cnpj = Convert.ToInt64(reader["nr_cnpj"].ToString());
+                    filial.id_endereco = reader.GetGuid(reader.GetOrdinal("id_endereco"));
+                    filiais.Add(filial);
+                }
+
+                return filiais;
+
+            }
+            catch (Exception e)
+            {
+                Filial filial = new Filial();
+                filial.id_filial = new Guid();
+                filial.nm_filial = "Ocorreu o erro:" + e.Message;
+                filiais.Add(filial);
+
+                return filiais;
+            }
+            finally
+            {
+                // close reader
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+        }
     }
 }

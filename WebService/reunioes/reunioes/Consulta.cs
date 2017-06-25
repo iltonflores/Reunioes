@@ -34,5 +34,32 @@ namespace reunioes
             }
 
         }
+
+        public List<Filial> GetFiliais(Guid id_filial, Int64 nr_cnpj)
+        {
+            List<Filial> filiais = new List<Filial>();
+            try
+            {
+                ConsultaBancoDados banco = new ConsultaBancoDados();
+
+                SqlConnection conexao = banco.abrirConexao();
+
+                filiais = banco.SqlCommandConsultaFilial(conexao, id_filial, nr_cnpj);
+
+                banco.fecharConexao(conexao);
+                return filiais;
+            }
+            catch (Exception error)
+            {
+
+                Filial filial = new Filial();
+                filial.id_filial = new Guid();
+                filial.nm_filial = "Ocorreu o erro:" + error.Message;
+                filiais.Add(filial);
+
+                return filiais;
+            }
+
+        }
     }
 }

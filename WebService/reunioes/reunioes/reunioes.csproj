@@ -72,6 +72,10 @@
     <Compile Include="Cadastro.cs" />
     <Compile Include="CadastroBancoDados.cs" />
     <Compile Include="Consulta.cs" />
+    <Compile Include="Tabelas\Reserva.cs" />
+    <Compile Include="Tabelas\Responsavel.cs" />
+    <Compile Include="Tabelas\Sala.cs" />
+    <Compile Include="Tabelas\Filial.cs" />
     <Compile Include="Tabelas\Endereco.cs" />
     <Compile Include="Retorno.cs" />
     <Compile Include="Servicos.svc.cs">

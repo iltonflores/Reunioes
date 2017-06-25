@@ -187,6 +187,22 @@ namespace reunioes
             comando.Prepare();
             comando.ExecuteNonQuery();
         }
+
+        public void RemoveFiliais(SqlConnection conexao, Guid id_filial)
+        {
+
+            SqlCommand comando = new SqlCommand(null, conexao);
+
+            // Create and prepare an SQL statement.
+            comando.CommandText =
+                "DELETE fil " +
+                "FROM Filial fil ";
+
+            comando = SqlAddParametro(conexao, comando, id_filial, "fil.id_filial");
+
+            comando.Prepare();
+            comando.ExecuteNonQuery();
+        }
        
     }
 }
