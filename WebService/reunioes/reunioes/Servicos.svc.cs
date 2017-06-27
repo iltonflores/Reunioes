@@ -116,5 +116,29 @@ namespace reunioes
 
             return retorno;
         }
+
+        public Retorno ApagaSala(Guid id_sala)
+        {
+            Remove remSala = new Remove();
+            Retorno retorno = remSala.Sala(id_sala);
+
+            return retorno;
+        }
+
+        public Retorno ApagaResponsavel(Guid id_responsavel)
+        {
+            Remove remResponsavel = new Remove();
+            Retorno retorno = remResponsavel.Responsavel(id_responsavel);
+
+            return retorno;
+        }
+
+        public Retorno ApagaReserva(Guid id_reserva)
+        {
+            Remove remReserva = new Remove();
+            Retorno retorno = remReserva.Reserva(id_reserva);
+
+            return retorno;
+        }
     }
 }

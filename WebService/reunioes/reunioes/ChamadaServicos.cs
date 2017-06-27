@@ -39,7 +39,19 @@ namespace reunioes
 
         [OperationContract]
         [WebInvoke(Method = "DELETE", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "deleteFilial?id_filial={id_filialParam}")]
-        Retorno ApagaFilial(Guid id_filialParam); 
+        Retorno ApagaFilial(Guid id_filialParam);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "deleteSala?id_sala={id_salaParam}")]
+        Retorno ApagaSala(Guid id_salaParam);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "deleteResponsavel?id_responsavel={id_responsavelParam}")]
+        Retorno ApagaResponsavel(Guid id_responsavelParam);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "deleteReserva?id_reserva={id_reservaParam}")]
+        Retorno ApagaReserva(Guid id_reservaParam); 
         
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getEnderecos?id_endereco={id_enderecoParam}&nm_cidade={nm_cidadeParam}&nr_cep={nr_cepParam}&nm_estado={nm_estadoParam}")]

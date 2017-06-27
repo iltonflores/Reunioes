@@ -190,6 +190,7 @@ namespace reunioes
 
         public void RemoveFiliais(SqlConnection conexao, Guid id_filial)
         {
+            RemoveReserva(conexao, new Guid("00000000-0000-0000-0000-000000000000"), new Guid("00000000-0000-0000-0000-000000000000"), new Guid("00000000-0000-0000-0000-000000000000"), id_filial);
 
             SqlCommand comando = new SqlCommand(null, conexao);
 
@@ -199,6 +200,59 @@ namespace reunioes
                 "FROM Filial fil ";
 
             comando = SqlAddParametro(conexao, comando, id_filial, "fil.id_filial");
+
+            comando.Prepare();
+            comando.ExecuteNonQuery();
+        }
+
+        public void RemoveSala(SqlConnection conexao, Guid id_sala)
+        {
+            RemoveReserva(conexao, new Guid("00000000-0000-0000-0000-000000000000"), new Guid("00000000-0000-0000-0000-000000000000"), id_sala, new Guid("00000000-0000-0000-0000-000000000000"));
+
+            SqlCommand comando = new SqlCommand(null, conexao);
+
+            // Create and prepare an SQL statement.
+            comando.CommandText =
+                "DELETE sal " +
+                "FROM Sala sal ";
+
+            comando = SqlAddParametro(conexao, comando, id_sala, "sal.id_sala");
+
+            comando.Prepare();
+            comando.ExecuteNonQuery();
+        }
+
+        public void RemoveResponsavel(SqlConnection conexao, Guid id_responsavel)
+        {
+            RemoveReserva(conexao, new Guid("00000000-0000-0000-0000-000000000000"), id_responsavel, new Guid("00000000-0000-0000-0000-000000000000"), new Guid("00000000-0000-0000-0000-000000000000"));
+
+            SqlCommand comando = new SqlCommand(null, conexao);
+
+            // Create and prepare an SQL statement.
+            comando.CommandText =
+                "DELETE res " +
+                "FROM Responsavel res ";
+
+            comando = SqlAddParametro(conexao, comando, id_responsavel, "res.id_responsavel");
+
+            comando.Prepare();
+            comando.ExecuteNonQuery();
+        }
+
+        public void RemoveReserva(SqlConnection conexao, Guid id_reserva, Guid id_responsavel, Guid id_sala, Guid id_filial)
+        {
+
+            SqlCommand comando = new SqlCommand(null, conexao);
+
+            // Create and prepare an SQL statement.
+            comando.CommandText =
+                "DELETE res " +
+                "FROM Reserva res ";
+
+            comando = SqlAddParametro(conexao, comando, id_reserva, "res.id_reserva");
+            comando = SqlAddParametro(conexao, comando, id_responsavel, "res.id_responsavel");
+            comando = SqlAddParametro(conexao, comando, id_sala, "res.id_sala");
+            comando = SqlAddParametro(conexao, comando, id_filial, "res.id_filial");
 
             comando.Prepare();
             comando.ExecuteNonQuery();
