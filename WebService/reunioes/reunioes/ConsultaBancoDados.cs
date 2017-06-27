@@ -278,5 +278,164 @@ namespace reunioes
                 }
             }
         }
+
+        public List<Sala> SqlCommandConsultaSala(SqlConnection conexao, Guid id_sala, String nm_sala)
+        {
+            SqlDataReader reader = null;
+
+            List<Sala> salas = new List<Sala>();
+            try
+            {
+
+                SqlCommand comando = new SqlCommand(null, conexao);
+
+                comando.CommandText = "SELECT * FROM Sala";
+
+                comando = SqlAddParametro(conexao, comando, id_sala, "id_sala");
+                comando = SqlAddParametro(conexao, comando, nm_sala, "nm_sala");
+
+                reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Sala sala = new Sala();
+
+                    sala.id_sala = reader.GetGuid(reader.GetOrdinal("id_sala"));
+                    sala.nm_sala = reader["nm_sala"].ToString();
+                    salas.Add(sala);
+                }
+
+                return salas;
+
+            }
+            catch (Exception e)
+            {
+                Sala sala = new Sala();
+                sala.id_sala = new Guid();
+                sala.nm_sala = "Ocorreu o erro:" + e.Message;
+                salas.Add(sala);
+
+                return salas;
+            }
+            finally
+            {
+                // close reader
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+        }
+
+        public List<Responsavel> SqlCommandConsultaResponsavel(SqlConnection conexao, Guid id_responsavel, Int64 nr_cpf)
+        {
+            SqlDataReader reader = null;
+
+            List<Responsavel> responsaveis = new List<Responsavel>();
+            try
+            {
+
+                SqlCommand comando = new SqlCommand(null, conexao);
+
+                comando.CommandText = "SELECT * FROM Responsavel";
+
+                comando = SqlAddParametro(conexao, comando, id_responsavel, "id_responsavel");
+                comando = SqlAddParametro(conexao, comando, nr_cpf, "nr_cpf");
+
+                reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Responsavel responsavel = new Responsavel();
+
+                    responsavel.id_responsavel = reader.GetGuid(reader.GetOrdinal("id_responsavel"));
+                    responsavel.nm_responsavel = reader["nm_responsavel"].ToString();
+                    responsavel.nr_telefone = Convert.ToInt64(reader["nr_telefone"].ToString());
+                    responsavel.nr_cpf = Convert.ToInt64(reader["nr_cpf"].ToString());
+                    responsaveis.Add(responsavel);
+                }
+
+                return responsaveis;
+
+            }
+            catch (Exception e)
+            {
+                Responsavel responsavel = new Responsavel();
+                responsavel.id_responsavel = new Guid();
+                responsavel.nm_responsavel = "Ocorreu o erro:" + e.Message;
+                responsaveis.Add(responsavel);
+
+                return responsaveis;
+            }
+            finally
+            {
+                // close reader
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+        }
+
+        public List<Reserva> SqlCommandConsultaReserva(SqlConnection conexao, Guid id_reserva, DateTime dt_inicio, DateTime dt_fim, Guid id_sala, Guid id_filial)
+        {
+            SqlDataReader reader = null;
+
+            List<Reserva> reservas = new List<Reserva>();
+            try
+            {
+
+                SqlCommand comando = new SqlCommand(null, conexao);
+
+                comando.CommandText = "SELECT * FROM Reserva";
+
+                comando = SqlAddParametro(conexao, comando, id_reserva, "id_reserva");
+                comando = SqlAddParametro(conexao, comando, dt_inicio, "dt_inicio");
+                comando = SqlAddParametro(conexao, comando, dt_fim, "dt_fim");
+                comando = SqlAddParametro(conexao, comando, id_sala, "id_sala");
+                comando = SqlAddParametro(conexao, comando, id_filial, "id_filial");
+
+                reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Reserva reserva = new Reserva();
+
+                    reserva.id_reserva = reader.GetGuid(reader.GetOrdinal("id_reserva"));
+                    reserva.id_filial = reader.GetGuid(reader.GetOrdinal("id_filial"));
+                    reserva.id_sala = reader.GetGuid(reader.GetOrdinal("id_sala"));
+                    reserva.dt_inicio=Convert.ToDateTime(reader["dt_inicio"].ToString());
+                    reserva.dt_fim=Convert.ToDateTime(reader["dt_fim"].ToString());
+                    reserva.id_responsavel = reader.GetGuid(reader.GetOrdinal("id_responsavel"));
+                    reserva.dv_cafe = Convert.ToBoolean(reader["dv_cafe"].ToString()); 
+                    reserva.qt_cafe = Convert.ToInt16(reader["qt_cafe"].ToString());
+                    reserva.nm_descricao = reader["nm_descricao"].ToString();
+                    reservas.Add(reserva);
+                }
+
+                return reservas;
+
+            }
+            catch (Exception e)
+            {
+                Reserva reserva = new Reserva();
+                reserva.id_reserva = new Guid();
+                reserva.nm_descricao = "Ocorreu o erro:" + e.Message;
+                reservas.Add(reserva);
+
+                return reservas;
+            }
+            finally
+            {
+                // close reader
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+        }
     }
 }

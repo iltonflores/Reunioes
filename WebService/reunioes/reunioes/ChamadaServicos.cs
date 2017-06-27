@@ -48,5 +48,17 @@ namespace reunioes
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getFiliais?id_filial={id_filialParam}&nr_cnpj={nr_cnpjParam}")]
         List<Filial> GetFiliais(Guid id_filialParam, Int64 nr_cnpjParam);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getSalas?id_sala={id_salaParam}&nm_sala={nm_salaParam}")]
+        List<Sala> GetSalas(Guid id_salaParam, String nm_salaParam);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getResponsaveis?id_responsavel={id_responsavelParam}&nr_cpf={nr_cpfParam}")]
+        List<Responsavel> GetResponsaveis(Guid id_ResponsavelParam, Int64 nr_cpfParam);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getReservas?id_reserva={id_reservaParam}&dt_inicio={dt_inicioParam}&dt_fim={dt_fimParam}&id_sala={id_salaParam}&id_filial={id_filialParam}")]
+        List<Reserva> GetReservas(Guid id_reservaParam, DateTime dt_inicioParam, DateTime dt_fimParam, Guid id_salaParam, Guid id_filialParam);
     }
 }

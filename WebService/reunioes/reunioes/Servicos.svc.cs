@@ -74,6 +74,33 @@ namespace reunioes
             return filiais;
         }
 
+        public List<Sala> GetSalas(Guid id_sala, String nm_sala)
+        {
+            Consulta conGetSalas = new Consulta();
+
+            List<Sala> salas = conGetSalas.GetSalas(id_sala, nm_sala);
+
+            return salas;
+        }
+
+        public List<Responsavel> GetResponsaveis(Guid id_responsavel, Int64 nr_cpf)
+        {
+            Consulta conGetResponsaveis = new Consulta();
+
+            List<Responsavel> responsaveis = conGetResponsaveis.GetResponsaveis(id_responsavel, nr_cpf);
+
+            return responsaveis;
+        }
+
+        public List<Reserva> GetReservas(Guid id_reserva, DateTime dt_inicio, DateTime dt_fim, Guid id_sala, Guid id_filial)
+        {
+            Consulta conGetReservas = new Consulta();
+
+            List<Reserva> reservas = conGetReservas.GetReservas(id_reserva, dt_inicio, dt_fim, id_sala, id_filial);
+
+            return reservas;
+        }
+
         public Retorno ApagaEndereco(Guid id_endereco, Guid id_filial)
         {
             Remove remEndereco = new Remove();
