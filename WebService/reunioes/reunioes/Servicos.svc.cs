@@ -32,6 +32,30 @@ namespace reunioes
             return retorno;
         }
 
+        public Retorno CadastraSala(Stream sal)
+        {
+            Cadastro cadSala = new Cadastro();
+            Retorno retorno = cadSala.Sala(sal);
+
+            return retorno;
+        }
+
+        public Retorno CadastraResponsavel(Stream res)
+        {
+            Cadastro cadResponsavel = new Cadastro();
+            Retorno retorno = cadResponsavel.Responsavel(res);
+
+            return retorno;
+        }
+
+        public Retorno CadastraReserva(Stream res)
+        {
+            Cadastro cadReserva = new Cadastro();
+            Retorno retorno = cadReserva.Reserva(res);
+
+            return retorno;
+        }
+
         public List<Endereco> GetEnderecos(Guid id_endereco, String nm_cidade, int nr_cep, String nm_estado)
         {
             Consulta conGetEnderecos = new Consulta();

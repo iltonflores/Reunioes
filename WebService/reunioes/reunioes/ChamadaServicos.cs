@@ -22,6 +22,18 @@ namespace reunioes
         Retorno CadastraFilial(Stream Filial);
 
         [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "postSala")]
+        Retorno CadastraSala(Stream Sala);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "postResponsavel")]
+        Retorno CadastraResponsavel(Stream Responsavel);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "postReserva")]
+        Retorno CadastraReserva(Stream Reserva);
+
+        [OperationContract]
         [WebInvoke(Method = "DELETE", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "deleteEndereco?id_endereco={id_enderecoParam}&id_filial={id_filialParam}")]
         Retorno ApagaEndereco(Guid id_enderecoParam, Guid id_filialParam);
 

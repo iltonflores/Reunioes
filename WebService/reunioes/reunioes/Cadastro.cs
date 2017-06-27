@@ -112,5 +112,158 @@ namespace reunioes
                 return retorno;
             }
         }
+
+        public Retorno Sala(Stream sal)
+        {
+            try
+            {
+
+                StreamReader reader = new StreamReader(sal);
+                string JSONdata = reader.ReadToEnd();
+
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+                Sala sala = jss.Deserialize<Sala>(JSONdata);
+
+                Retorno retorno = new Retorno();
+
+                if (sala == null)
+                {
+                    retorno.CodigoRetorno = 0;
+                    retorno.DescricaoRetorno = "Falha ao deserializar";
+                }
+                else
+                {
+                    CadastroBancoDados banco = new CadastroBancoDados();
+
+                    SqlConnection conexao = banco.abrirConexao();
+
+                    if (sala.id_sala.ToString().Equals("00000000-0000-0000-0000-000000000000"))
+                    {
+                        retorno.guid = banco.SqlCommandInsereSala(conexao, sala);
+                        retorno.CodigoRetorno = 1;
+                        retorno.DescricaoRetorno = "Sala inserida";
+                    }
+                    else
+                    {
+                        banco.SqlCommandAtualizaSala(conexao, sala);
+                        retorno.guid = sala.id_sala;
+                        retorno.CodigoRetorno = 1;
+                        retorno.DescricaoRetorno = "Sala atualizada";
+                    }
+
+                    banco.fecharConexao(conexao);
+                }
+                return retorno;
+            }
+            catch (Exception error)
+            {
+                Retorno retorno = new Retorno();
+                retorno.CodigoRetorno = 0;
+                retorno.DescricaoRetorno = "Ocorreu o erro:" + error.Message;
+                return retorno;
+            }
+        }
+
+        public Retorno Responsavel(Stream res)
+        {
+            try
+            {
+
+                StreamReader reader = new StreamReader(res);
+                string JSONdata = reader.ReadToEnd();
+
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+                Responsavel responsavel = jss.Deserialize<Responsavel>(JSONdata);
+
+                Retorno retorno = new Retorno();
+
+                if (responsavel == null)
+                {
+                    retorno.CodigoRetorno = 0;
+                    retorno.DescricaoRetorno = "Falha ao deserializar";
+                }
+                else
+                {
+                    CadastroBancoDados banco = new CadastroBancoDados();
+
+                    SqlConnection conexao = banco.abrirConexao();
+
+                    if (responsavel.id_responsavel.ToString().Equals("00000000-0000-0000-0000-000000000000"))
+                    {
+                        retorno.guid = banco.SqlCommandInsereResponsavel(conexao, responsavel);
+                        retorno.CodigoRetorno = 1;
+                        retorno.DescricaoRetorno = "Responsável inserido";
+                    }
+                    else
+                    {
+                        banco.SqlCommandAtualizaResponsavel(conexao, responsavel);
+                        retorno.guid = responsavel.id_responsavel;
+                        retorno.CodigoRetorno = 1;
+                        retorno.DescricaoRetorno = "Responsável atualizado";
+                    }
+
+                    banco.fecharConexao(conexao);
+                }
+                return retorno;
+            }
+            catch (Exception error)
+            {
+                Retorno retorno = new Retorno();
+                retorno.CodigoRetorno = 0;
+                retorno.DescricaoRetorno = "Ocorreu o erro:" + error.Message;
+                return retorno;
+            }
+        }
+
+        public Retorno Reserva(Stream res)
+        {
+            try
+            {
+
+                StreamReader reader = new StreamReader(res);
+                string JSONdata = reader.ReadToEnd();
+
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+                Reserva reserva = jss.Deserialize<Reserva>(JSONdata);
+
+                Retorno retorno = new Retorno();
+
+                if (reserva == null)
+                {
+                    retorno.CodigoRetorno = 0;
+                    retorno.DescricaoRetorno = "Falha ao deserializar";
+                }
+                else
+                {
+                    CadastroBancoDados banco = new CadastroBancoDados();
+
+                    SqlConnection conexao = banco.abrirConexao();
+
+                    if (reserva.id_reserva.ToString().Equals("00000000-0000-0000-0000-000000000000"))
+                    {
+                        retorno.guid = banco.SqlCommandInsereReserva(conexao, reserva);
+                        retorno.CodigoRetorno = 1;
+                        retorno.DescricaoRetorno = "Reserva inserida";
+                    }
+                    else
+                    {
+                        banco.SqlCommandAtualizaReserva(conexao, reserva);
+                        retorno.guid = reserva.id_reserva;
+                        retorno.CodigoRetorno = 1;
+                        retorno.DescricaoRetorno = "Reserva atualizada";
+                    }
+
+                    banco.fecharConexao(conexao);
+                }
+                return retorno;
+            }
+            catch (Exception error)
+            {
+                Retorno retorno = new Retorno();
+                retorno.CodigoRetorno = 0;
+                retorno.DescricaoRetorno = "Ocorreu o erro:" + error.Message;
+                return retorno;
+            }
+        }
     }
 }
