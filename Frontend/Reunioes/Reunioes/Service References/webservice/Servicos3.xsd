@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/reunioes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/reunioes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:56123/Servicos.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Retorno">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoRetorno" type="xs:int" />
+      <xs:element minOccurs="0" name="DescricaoRetorno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="guid" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Retorno" nillable="true" type="tns:Retorno" />
+  <xs:complexType name="ArrayOfEndereco">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Endereco" nillable="true" type="tns:Endereco" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEndereco" nillable="true" type="tns:ArrayOfEndereco" />
+  <xs:complexType name="Endereco">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id_endereco" type="ser:guid" />
+      <xs:element minOccurs="0" name="nm_bairro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nm_cidade" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nm_estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nm_rua" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nr_cep" type="xs:int" />
+      <xs:element minOccurs="0" name="nr_rua" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Endereco" nillable="true" type="tns:Endereco" />
+  <xs:complexType name="ArrayOfFilial">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Filial" nillable="true" type="tns:Filial" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFilial" nillable="true" type="tns:ArrayOfFilial" />
+  <xs:complexType name="Filial">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id_endereco" type="ser:guid" />
+      <xs:element minOccurs="0" name="id_filial" type="ser:guid" />
+      <xs:element minOccurs="0" name="nm_filial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nr_cnpj" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Filial" nillable="true" type="tns:Filial" />
+  <xs:complexType name="ArrayOfSala">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sala" nillable="true" type="tns:Sala" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSala" nillable="true" type="tns:ArrayOfSala" />
+  <xs:complexType name="Sala">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id_sala" type="ser:guid" />
+      <xs:element minOccurs="0" name="nm_sala" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sala" nillable="true" type="tns:Sala" />
+  <xs:complexType name="ArrayOfResponsavel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Responsavel" nillable="true" type="tns:Responsavel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResponsavel" nillable="true" type="tns:ArrayOfResponsavel" />
+  <xs:complexType name="Responsavel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id_responsavel" type="ser:guid" />
+      <xs:element minOccurs="0" name="nm_responsavel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nr_cpf" type="xs:long" />
+      <xs:element minOccurs="0" name="nr_telefone" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Responsavel" nillable="true" type="tns:Responsavel" />
+  <xs:complexType name="ArrayOfReserva">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reserva" nillable="true" type="tns:Reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReserva" nillable="true" type="tns:ArrayOfReserva" />
+  <xs:complexType name="Reserva">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dt_fim" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dt_inicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dv_cafe" type="xs:boolean" />
+      <xs:element minOccurs="0" name="id_filial" type="ser:guid" />
+      <xs:element minOccurs="0" name="id_reserva" type="ser:guid" />
+      <xs:element minOccurs="0" name="id_responsavel" type="ser:guid" />
+      <xs:element minOccurs="0" name="id_sala" type="ser:guid" />
+      <xs:element minOccurs="0" name="nm_descricao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="qt_cafe" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reserva" nillable="true" type="tns:Reserva" />
+</xs:schema>

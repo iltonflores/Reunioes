@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Servicos" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:56123/Servicos.svc?xsd=xsd1" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:56123/Servicos.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/Message" />
+      <xsd:import schemaLocation="http://localhost:56123/Servicos.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:56123/Servicos.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/reunioes" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ChamadaServicos_CadastraEndereco_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraEndereco" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_CadastraEndereco_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraEnderecoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_CadastraFilial_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraFilial" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_CadastraFilial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraFilialResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_CadastraSala_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraSala" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_CadastraSala_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraSalaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_CadastraResponsavel_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraResponsavel" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_CadastraResponsavel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraResponsavelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_CadastraReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraReserva" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_CadastraReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CadastraReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaEndereco_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaEndereco" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaEndereco_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaEnderecoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaFilial_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaFilial" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaFilial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaFilialResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaSala_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaSala" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaSala_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaSalaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaResponsavel_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaResponsavel" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaResponsavel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaResponsavelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaReserva" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_ApagaReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApagaReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetEnderecos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEnderecos" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetEnderecos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEnderecosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetFiliais_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFiliais" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetFiliais_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFiliaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetSalas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalas" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetSalas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetResponsaveis_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResponsaveis" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetResponsaveis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResponsaveisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetReservas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservas" />
+  </wsdl:message>
+  <wsdl:message name="ChamadaServicos_GetReservas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservasResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ChamadaServicos">
+    <wsdl:operation name="CadastraEndereco">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraEndereco" message="tns:ChamadaServicos_CadastraEndereco_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraEnderecoResponse" message="tns:ChamadaServicos_CadastraEndereco_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastraFilial">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraFilial" message="tns:ChamadaServicos_CadastraFilial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraFilialResponse" message="tns:ChamadaServicos_CadastraFilial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastraSala">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraSala" message="tns:ChamadaServicos_CadastraSala_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraSalaResponse" message="tns:ChamadaServicos_CadastraSala_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastraResponsavel">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraResponsavel" message="tns:ChamadaServicos_CadastraResponsavel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraResponsavelResponse" message="tns:ChamadaServicos_CadastraResponsavel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastraReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraReserva" message="tns:ChamadaServicos_CadastraReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/CadastraReservaResponse" message="tns:ChamadaServicos_CadastraReserva_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApagaEndereco">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaEndereco" message="tns:ChamadaServicos_ApagaEndereco_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaEnderecoResponse" message="tns:ChamadaServicos_ApagaEndereco_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApagaFilial">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaFilial" message="tns:ChamadaServicos_ApagaFilial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaFilialResponse" message="tns:ChamadaServicos_ApagaFilial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApagaSala">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaSala" message="tns:ChamadaServicos_ApagaSala_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaSalaResponse" message="tns:ChamadaServicos_ApagaSala_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApagaResponsavel">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaResponsavel" message="tns:ChamadaServicos_ApagaResponsavel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaResponsavelResponse" message="tns:ChamadaServicos_ApagaResponsavel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApagaReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaReserva" message="tns:ChamadaServicos_ApagaReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/ApagaReservaResponse" message="tns:ChamadaServicos_ApagaReserva_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEnderecos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/GetEnderecos" message="tns:ChamadaServicos_GetEnderecos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/GetEnderecosResponse" message="tns:ChamadaServicos_GetEnderecos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFiliais">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/GetFiliais" message="tns:ChamadaServicos_GetFiliais_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/GetFiliaisResponse" message="tns:ChamadaServicos_GetFiliais_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalas">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/GetSalas" message="tns:ChamadaServicos_GetSalas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/GetSalasResponse" message="tns:ChamadaServicos_GetSalas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResponsaveis">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/GetResponsaveis" message="tns:ChamadaServicos_GetResponsaveis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/GetResponsaveisResponse" message="tns:ChamadaServicos_GetResponsaveis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservas">
+      <wsdl:input wsaw:Action="http://tempuri.org/ChamadaServicos/GetReservas" message="tns:ChamadaServicos_GetReservas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ChamadaServicos/GetReservasResponse" message="tns:ChamadaServicos_GetReservas_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="Servicos" />
+</wsdl:definitions>

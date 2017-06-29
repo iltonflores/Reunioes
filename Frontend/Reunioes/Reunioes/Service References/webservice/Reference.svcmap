@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7c9ec286-2ec7-4601-a08d-9b4f16e5e21e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:56123/Servicos.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Servicos.xsd" MetadataType="Schema" ID="5b88ab4a-c58e-40d0-a89b-f3d2e60d94a7" SourceId="1" SourceUrl="http://localhost:56123/Servicos.svc?xsd=xsd1" />
+    <MetadataFile FileName="Servicos1.xsd" MetadataType="Schema" ID="b8e51206-9595-43e8-893d-783215a5a2c4" SourceId="1" SourceUrl="http://localhost:56123/Servicos.svc?xsd=xsd2" />
+    <MetadataFile FileName="Servicos.wsdl" MetadataType="Wsdl" ID="d8727217-d2d2-4f5c-b05c-f5a2b4444f7f" SourceId="1" SourceUrl="http://localhost:56123/Servicos.svc?wsdl" />
+    <MetadataFile FileName="Servicos2.xsd" MetadataType="Schema" ID="f6c7b3ca-9d11-4864-ae5e-e7a52ba00acd" SourceId="1" SourceUrl="http://localhost:56123/Servicos.svc?xsd=xsd0" />
+    <MetadataFile FileName="Servicos.disco" MetadataType="Disco" ID="8f955f30-699c-43b3-9f09-3acf88808455" SourceId="1" SourceUrl="http://localhost:56123/Servicos.svc?disco" />
+    <MetadataFile FileName="Servicos3.xsd" MetadataType="Schema" ID="666e6a24-9845-4a19-8a10-924f4fc4e1f0" SourceId="1" SourceUrl="http://localhost:56123/Servicos.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
