@@ -26,7 +26,12 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Cadastra()
         {
-            return View();
+            WebClient wc = new WebClient();
+
+            var json = wc.DownloadString("http://localhost:56123/Servicos.svc/getSalas");
+            SalasViewModel salas = JsonConvert.DeserializeObject<SalasViewModel>(json);
+
+            return View(salas);
         }
 
     }

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MvcApplication1.SalasViewModel
+
+@{
     ViewBag.Title = "Cadastro de Reservas";
 }
 
@@ -9,5 +11,60 @@
 
 <div ng-app="CadastraReservas" ng-strict-di>
     <div ng-controller="ReservasController">
+
+        <li>
+            <output>Filial:</output>
+            <select>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+        </li>
+        <li>
+            <output>Sala:</output>
+            <select>
+                @foreach (var sala in Model.salas)
+                {
+                    <option id=@sala.id_sala value="nm_sala">@sala.nm_sala</option>
+                    <!--More properties-->
+                }
+            </select>
+        </li>
+        <li>
+            <output>Data de início:</output>
+            <input type="datetime-local" name="dt_inicio">
+        </li>
+        <li>
+            <output>Data de encerramento:</output>
+            <input type="datetime-local" name="dt_fim">
+        </li>
+        <li>
+            <output>Responsável:</output>
+            <select>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+        </li>
+        <li>
+            <output>Café?</output>
+            <input type="checkbox" name="dv_cafe">
+        </li>
+        <li>
+            <output>Quantidade:</output>
+            <input type="number" name="qt_cafe">
+        </li>
+        <li>
+            <output>Descrição:</output>
+            <input type="text" name="descricao">
+        </li>
+        <form class="form-inline" name="cadReserva" align="center">
+            <form>
+                <input type="button"
+                    value="Cadastrar">
+            </form>
+        </form>
     </div>
 </div>
