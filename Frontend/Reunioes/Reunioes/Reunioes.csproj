@@ -181,6 +181,7 @@
     <Compile Include="Tabelas\Endereco.cs" />
     <Compile Include="Tabelas\Filial.cs" />
     <Compile Include="Tabelas\Reserva.cs" />
+    <Compile Include="ViewModels\CombosViewModel.cs" />
     <Compile Include="ViewModels\ResponsaveisViewModel.cs" />
     <Compile Include="ViewModels\FiliaisViewModel.cs" />
     <Compile Include="ViewModels\SalasViewModel.cs" />

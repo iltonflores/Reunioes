@@ -1,4 +1,4 @@
-﻿@model MvcApplication1.SalasViewModel
+﻿@model MvcApplication1.CombosViewModel
 
 @{
     ViewBag.Title = "Cadastro de Reservas";
@@ -15,10 +15,11 @@
         <li>
             <output>Filial:</output>
             <select>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+               @foreach (var filial in Model.filiais)
+                {
+                    <option id=@filial.id_filial value="nm_filial">@filial.nm_filial</option>
+                    <!--More properties-->
+                }
             </select>
         </li>
         <li>
@@ -42,10 +43,11 @@
         <li>
             <output>Responsável:</output>
             <select>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+               @foreach (var responsavel in Model.responsaveis)
+                {
+                    <option id=@responsavel.id_responsavel value="nm_responsavel">@responsavel.nm_responsavel</option>
+                    <!--More properties-->
+                }
             </select>
         </li>
         <li>

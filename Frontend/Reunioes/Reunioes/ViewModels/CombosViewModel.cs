@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Collections.ObjectModel;
-using MvcApplication1;
 
 namespace MvcApplication1
 {
-    public class ResponsaveisViewModel
+    public class CombosViewModel
     {
-        [JsonProperty("GetResponsaveisResult")]
+        public Filial[] filiais { get; set; }
+        public Sala[] salas { get; set; }
         public Responsavel[] responsaveis { get; set; }
     }
 }
