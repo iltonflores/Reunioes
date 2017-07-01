@@ -144,4 +144,3 @@ C:\Users\Junior\Desktop\Banana\Reunioes\Frontend\Reunioes\Reunioes\bin\DotNetOpe
 C:\Users\Junior\Desktop\Banana\Reunioes\Frontend\Reunioes\Reunioes\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\Junior\Desktop\Banana\Reunioes\Frontend\Reunioes\Reunioes\obj\Debug\MvcApplication1.dll
 C:\Users\Junior\Desktop\Banana\Reunioes\Frontend\Reunioes\Reunioes\obj\Debug\MvcApplication1.pdb
-C:\Users\Junior\Desktop\Banana\Reunioes\Frontend\Reunioes\Reunioes\obj\Debug\Reunioes.csprojResolveAssemblyReference.cache
