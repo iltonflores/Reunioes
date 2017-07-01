@@ -1,31 +1,44 @@
 ﻿@model MvcApplication1.ReservasViewModel
 
 @{
-    ViewBag.Title = "Listagem";
+    ViewBag.Title = "Listagem de Reservas";
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <h1>@ViewBag.Title</h1>
     <h2>@ViewBag.Message</h2>
 </hgroup>
 
 <div ng-app="ListaReservas" ng-strict-di>
     <div ng-controller="ReservasController">
-        {{Mensagem}}
 
-    <form class="form-inline" name="formTeste">
-        <form>
-            <input type="button"
-                value="Teste">
-        </form>
-    </form>
-
-        @Html.DisplayTextFor(model => model.reservas[0].id_reserva)
-
-        <table >
-            <tr>
-                <td width =30%>model.reservas[0].id_reserva</td>
-            </tr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Filial</th>
+                    <th>Sala</th>
+                    <th>Data de início</th>
+                    <th>Data de encerramento</th>
+                    <th>Responsável</th>
+                    <th>Descrição</th>
+                    <!--More column headings-->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reserva in Model.reservas)
+                {
+                    <tr>
+                        <td>@reserva.id_filial</td>
+                        <td>@reserva.id_sala</td>
+                        <td>@reserva.dt_inicio</td>
+                        <td>@reserva.dt_fim</td>
+                        <td>@reserva.id_responsavel</td>
+                        <td>@reserva.nm_descricao</td>
+                        <!--More properties-->
+                    </tr>
+                }
+            </tbody>
+            <!--Add footer for totals-->
         </table>
 
         <style>
@@ -43,31 +56,12 @@
                     background-color: #ffffff;
                 }
         </style>
+
+        <form class="form-inline" name="cadReserva" align="center">
+            <form>
+                <input type="button"
+                    value="Cadastrar Nova Reserva">
+            </form>
+        </form>
     </div>
 </div>
-
-<article>
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-</article>
-
-<aside>
-    <h3>Aside Title</h3>
-    <p>
-        Use this area to provide additional information.
-    </p>
-    <ul>
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-    </ul>
-</aside>
