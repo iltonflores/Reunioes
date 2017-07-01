@@ -164,7 +164,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CadResController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReservasController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -1090,10 +1089,11 @@
     <None Include="Service References\webservice\Servicos3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Reservas\Cadastro.cshtml" />
+    <Content Include="Views\Reservas\Cadastra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cadastra\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

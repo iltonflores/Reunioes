@@ -24,5 +24,10 @@ namespace MvcApplication1.Controllers
             return View(reservas);
         }
 
+        public ActionResult Cadastra()
+        {
+            return View();
+        }
+
     }
 }

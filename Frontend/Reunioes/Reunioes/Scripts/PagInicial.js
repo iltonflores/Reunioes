@@ -8,7 +8,7 @@
     app.controller('ReservasController', function ($scope) {
     });
 
-    app.controller('CadResController', function ($scope) {
+    app.controller('CadastraController', function ($scope) {
     });
 
 })();
