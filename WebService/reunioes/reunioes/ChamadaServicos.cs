@@ -72,5 +72,9 @@ namespace reunioes
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getReservas?id_reserva={id_reservaParam}&dt_inicio={dt_inicioParam}&dt_fim={dt_fimParam}&id_sala={id_salaParam}&id_filial={id_filialParam}")]
         List<Reserva> GetReservas(Guid id_reservaParam, DateTime dt_inicioParam, DateTime dt_fimParam, Guid id_salaParam, Guid id_filialParam);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getReservasTextoLista?id_reserva={id_reservaParam}&dt_inicio={dt_inicioParam}&dt_fim={dt_fimParam}&id_sala={id_salaParam}&id_filial={id_filialParam}")]
+        List<ReservaTextoLista> GetReservasTextoLista(Guid id_reservaParam, DateTime dt_inicioParam, DateTime dt_fimParam, Guid id_salaParam, Guid id_filialParam);
     }
 }

@@ -177,10 +177,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Tabelas\ReservaTextoLista.cs" />
     <Compile Include="Tabelas\Endereco.cs" />
     <Compile Include="Tabelas\Filial.cs" />
     <Compile Include="Tabelas\Reserva.cs" />
-    <Compile Include="Tabelas\ReservasViewModel.cs" />
+    <Compile Include="ViewModels\ReservasTextoListaViewModel.cs" />
+    <Compile Include="ViewModels\ReservasViewModel.cs" />
     <Compile Include="Tabelas\Responsavel.cs" />
     <Compile Include="Tabelas\Sala.cs" />
   </ItemGroup>

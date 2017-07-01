@@ -1,4 +1,4 @@
-﻿@model MvcApplication1.ReservasViewModel
+﻿@model MvcApplication1.ReservasTextoListaViewModel
 
 @{
     ViewBag.Title = "Listagem de Reservas";
@@ -28,11 +28,11 @@
                 @foreach (var reserva in Model.reservas)
                 {
                     <tr>
-                        <td>@reserva.id_filial</td>
-                        <td>@reserva.id_sala</td>
+                        <td>@reserva.nm_filial</td>
+                        <td>@reserva.nm_sala</td>
                         <td>@reserva.dt_inicio</td>
                         <td>@reserva.dt_fim</td>
-                        <td>@reserva.id_responsavel</td>
+                        <td>@reserva.nm_responsavel</td>
                         <td>@reserva.nm_descricao</td>
                         <!--More properties-->
                     </tr>

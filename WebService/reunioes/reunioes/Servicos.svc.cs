@@ -101,6 +101,15 @@ namespace reunioes
             return reservas;
         }
 
+        public List<ReservaTextoLista> GetReservasTextoLista(Guid id_reserva, DateTime dt_inicio, DateTime dt_fim, Guid id_sala, Guid id_filial)
+        {
+            Consulta conGetReservas = new Consulta();
+
+            List<ReservaTextoLista> reservas = conGetReservas.GetReservasTextoLista(id_reserva, dt_inicio, dt_fim, id_sala, id_filial);
+
+            return reservas;
+        }
+
         public Retorno ApagaEndereco(Guid id_endereco, Guid id_filial)
         {
             Remove remEndereco = new Remove();

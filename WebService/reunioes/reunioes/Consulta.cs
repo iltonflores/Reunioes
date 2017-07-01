@@ -142,5 +142,32 @@ namespace reunioes
             }
 
         }
+
+        public List<ReservaTextoLista> GetReservasTextoLista(Guid id_reserva, DateTime dt_inicio, DateTime dt_fim, Guid id_sala, Guid id_filial)
+        {
+            List<ReservaTextoLista> reservas = new List<ReservaTextoLista>();
+            try
+            {
+                ConsultaBancoDados banco = new ConsultaBancoDados();
+
+                SqlConnection conexao = banco.abrirConexao();
+
+                reservas = banco.SqlCommandConsultaReservaTextoLista(conexao, id_reserva, dt_inicio, dt_fim, id_sala, id_filial);
+
+                banco.fecharConexao(conexao);
+                return reservas;
+            }
+            catch (Exception error)
+            {
+
+                ReservaTextoLista reserva = new ReservaTextoLista();
+                reserva.id_reserva = new Guid();
+                reserva.nm_descricao = "Ocorreu o erro:" + error.Message;
+                reservas.Add(reserva);
+
+                return reservas;
+            }
+
+        }
     }
 }

@@ -437,5 +437,70 @@ namespace reunioes
                 }
             }
         }
+
+        public List<ReservaTextoLista> SqlCommandConsultaReservaTextoLista(SqlConnection conexao, Guid id_reserva, DateTime dt_inicio, DateTime dt_fim, Guid id_sala, Guid id_filial)
+        {
+            SqlDataReader reader = null;
+
+            List<ReservaTextoLista> reservas = new List<ReservaTextoLista>();
+            try
+            {
+
+                SqlCommand comando = new SqlCommand(null, conexao);
+
+                comando.CommandText = "SELECT r.*, s.nm_sala, f.nm_filial, rp.nm_responsavel FROM Reserva r "+
+                                      "INNER JOIN sala s ON s.id_sala = r.id_sala "+
+                                      "INNER JOIN filial f ON f.id_filial = r.id_filial "+
+                                      "INNER JOIN Responsavel rp ON rp.id_responsavel = r.id_responsavel";
+
+                comando = SqlAddParametro(conexao, comando, id_reserva, "id_reserva");
+                comando = SqlAddParametro(conexao, comando, dt_inicio, "dt_inicio");
+                comando = SqlAddParametro(conexao, comando, dt_fim, "dt_fim");
+                comando = SqlAddParametro(conexao, comando, id_sala, "id_sala");
+                comando = SqlAddParametro(conexao, comando, id_filial, "id_filial");
+
+                reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    ReservaTextoLista reserva = new ReservaTextoLista();
+
+                    reserva.id_reserva = reader.GetGuid(reader.GetOrdinal("id_reserva"));
+                    reserva.id_filial = reader.GetGuid(reader.GetOrdinal("id_filial"));
+                    reserva.id_sala = reader.GetGuid(reader.GetOrdinal("id_sala"));
+                    reserva.dt_inicio = Convert.ToDateTime(reader["dt_inicio"].ToString());
+                    reserva.dt_fim = Convert.ToDateTime(reader["dt_fim"].ToString());
+                    reserva.id_responsavel = reader.GetGuid(reader.GetOrdinal("id_responsavel"));
+                    reserva.dv_cafe = Convert.ToBoolean(reader["dv_cafe"].ToString());
+                    reserva.qt_cafe = Convert.ToInt16(reader["qt_cafe"].ToString());
+                    reserva.nm_descricao = reader["nm_descricao"].ToString();
+                    reserva.nm_sala = reader["nm_sala"].ToString();
+                    reserva.nm_filial = reader["nm_filial"].ToString();
+                    reserva.nm_responsavel = reader["nm_responsavel"].ToString();
+                    reservas.Add(reserva);
+                }
+
+                return reservas;
+
+            }
+            catch (Exception e)
+            {
+                ReservaTextoLista reserva = new ReservaTextoLista();
+                reserva.id_reserva = new Guid();
+                reserva.nm_descricao = "Ocorreu o erro:" + e.Message;
+                reservas.Add(reserva);
+
+                return reservas;
+            }
+            finally
+            {
+                // close reader
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+        }
     }
 }

@@ -18,8 +18,8 @@ namespace MvcApplication1.Controllers
         {
             WebClient wc = new WebClient();
 
-            var json = wc.DownloadString("http://localhost:56123/Servicos.svc/getReservas");
-            ReservasViewModel reservas = JsonConvert.DeserializeObject<ReservasViewModel>(json);
+            var json = wc.DownloadString("http://localhost:56123/Servicos.svc/getReservasTextoLista");
+            ReservasTextoListaViewModel reservas = JsonConvert.DeserializeObject<ReservasTextoListaViewModel>(json);
 
             return View(reservas);
         }
