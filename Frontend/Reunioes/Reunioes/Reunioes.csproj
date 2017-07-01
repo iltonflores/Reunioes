@@ -180,7 +180,7 @@
     <Compile Include="Tabelas\Endereco.cs" />
     <Compile Include="Tabelas\Filial.cs" />
     <Compile Include="Tabelas\Reserva.cs" />
-    <Compile Include="Tabelas\Reservas.cs" />
+    <Compile Include="Tabelas\ReservasViewModel.cs" />
     <Compile Include="Tabelas\Responsavel.cs" />
     <Compile Include="Tabelas\Sala.cs" />
   </ItemGroup>

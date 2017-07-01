@@ -16,19 +16,12 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Listagem()
         {
-            Reservas reservas=carregaLista();
-            return View();
-        }
-
-        public Reservas carregaLista()
-        {
-
             WebClient wc = new WebClient();
 
             var json = wc.DownloadString("http://localhost:56123/Servicos.svc/getReservas");
-            Reservas reservas = JsonConvert.DeserializeObject<Reservas>(json);
+            ReservasViewModel reservas = JsonConvert.DeserializeObject<ReservasViewModel>(json);
 
-            return reservas;
+            return View(reservas);
         }
 
     }
