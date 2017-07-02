@@ -9,13 +9,13 @@
     <h2>@ViewBag.Message</h2>
 </hgroup>
 
-<div ng-app="CadastraReservas" ng-strict-di>
-    <div ng-controller="ReservasController">
+<div data-ng-app="PagInicial">
+    <div data-ng-controller="ReservasController">     
 
         <li>
             <output>Filial:</output>
             <select>
-               @foreach (var filial in Model.filiais)
+                @foreach (var filial in Model.filiais)
                 {
                     <option id=@filial.id_filial value="nm_filial">@filial.nm_filial</option>
                     <!--More properties-->
@@ -43,7 +43,7 @@
         <li>
             <output>Responsável:</output>
             <select>
-               @foreach (var responsavel in Model.responsaveis)
+                @foreach (var responsavel in Model.responsaveis)
                 {
                     <option id=@responsavel.id_responsavel value="nm_responsavel">@responsavel.nm_responsavel</option>
                     <!--More properties-->
@@ -64,8 +64,11 @@
         </li>
         <form class="form-inline" name="cadReserva" align="center">
             <form>
-                <input type="button"
-                    value="Cadastrar">
+                <div data-ng-app="PagInicial">
+                    <div data-ng-controller="ReservasController">
+                        <button data-ng-click="function1('AngularJS')">Call first function</button>
+                    </div>
+                </div>
             </form>
         </form>
     </div>
