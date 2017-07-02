@@ -45,16 +45,39 @@ namespace MvcApplication1.Controllers
             return View(combos);
         }
 
-        public void PostReserva(String descricao, Int16 qt_cafe, Boolean dv_cafe, String id_filial)
+        public String PostReserva(String descricao, String qt_cafe, Boolean dv_cafe, Guid id_filial, Guid id_sala, Guid id_responsavel, DateTime dt_inicio, DateTime dt_fim)
         {
-            String desc = descricao;
-           // String json = JsonConvert.SerializeObject(cliente);
+            Reserva reserva = new Reserva();
 
-         //   Utils utils = new Utils();
+            Int16 qt_cafe_int;
 
-            //   String retornostr = utils.PostWebService("http://localhost:56123/Servicos.svc/postReserva", json);
+            if (qt_cafe.Equals("") || !dv_cafe)
+            {
+                qt_cafe_int = 0;
+            }
+            else
+            {
+                qt_cafe_int = Convert.ToInt16(qt_cafe);
+            }
 
-         //   Retorno retorno = JsonConvert.DeserializeObject<Retorno>(retornostr);
+            reserva.nm_descricao = descricao;
+            reserva.qt_cafe = qt_cafe_int;
+            reserva.dv_cafe = dv_cafe;
+            reserva.id_filial = id_filial;
+            reserva.id_sala = id_sala;
+            reserva.id_responsavel = id_responsavel;
+            reserva.dt_inicio = dt_inicio;
+            reserva.dt_fim = dt_fim;
+
+            String json = JsonConvert.SerializeObject(reserva);
+
+            Utils utils = new Utils();
+
+            String retornostr = utils.PostWebService("http://localhost:56123/Servicos.svc/postReserva", json);
+
+            Retorno retorno = JsonConvert.DeserializeObject<Retorno>(retornostr);
+
+            return retorno.DescricaoRetorno;
         }
 
     }

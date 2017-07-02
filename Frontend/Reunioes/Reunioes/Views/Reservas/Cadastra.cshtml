@@ -14,38 +14,38 @@
 
         <li>
             <output>Filial:</output>
-            <select>
+            <select id=id_filial>
                 @foreach (var filial in Model.filiais)
                 {
-                    <option id=id_filial value=@filial.id_filial>@filial.nm_filial</option>
+                    <option value=@filial.id_filial>@filial.nm_filial </option>
                     <!--More properties-->
                 }
             </select>
         </li>
         <li>
             <output>Sala:</output>
-            <select>
+            <select id=id_sala>
                 @foreach (var sala in Model.salas)
                 {
-                    <option id=@sala.id_sala value="nm_sala">@sala.nm_sala</option>
+                    <option value="@sala.id_sala">@sala.nm_sala</option>
                     <!--More properties-->
                 }
             </select>
         </li>
         <li>
             <output>Data de início:</output>
-            <input type="datetime-local" name="dt_inicio">
+            <input type="datetime-local" name="dt_inicio" id="dt_inicio">
         </li>
         <li>
             <output>Data de encerramento:</output>
-            <input type="datetime-local" name="dt_fim">
+            <input type="datetime-local" name="dt_fim"  id="dt_fim">
         </li>
         <li>
             <output>Responsável:</output>
-            <select>
+            <select id=id_responsavel>
                 @foreach (var responsavel in Model.responsaveis)
                 {
-                    <option id=@responsavel.id_responsavel value="nm_responsavel">@responsavel.nm_responsavel</option>
+                    <option value="@responsavel.id_responsavel">@responsavel.nm_responsavel</option>
                     <!--More properties-->
                 }
             </select>
@@ -68,14 +68,14 @@
                     <div ng-controller="ReservasController">
                         <input type="button"
                             value="Cadastrar Nova Reserva"
-                            onclick="cadastra(descricao.value, qt_cafe.value, dv_cafe.checked, id_filial)" />
+                            onclick="cadastra(descricao.value, qt_cafe.value, dv_cafe.checked, id_filial.value, id_sala.value, id_responsavel.value, dt_inicio.value, dt_fim.value)" />
                     </div>
                 </div>
             </form>
         </form>
 
         <script>
-            function cadastra(desc, qtc, dvc, idfil) {
+            function cadastra(desc, qtc, dvc, idfil, idsal, idres, dtini, dtfim) {
 
                 $.ajax({
                     type: "POST",
@@ -85,20 +85,25 @@
                         descricao: desc,
                         qt_cafe: qtc,
                         dv_cafe: dvc,
-                        id_filial: idfil
+                        id_filial: idfil,
+                        id_sala: idsal,
+                        id_responsavel: idres,
+                        dt_inicio: dtini,
+                        dt_fim: dtfim
                     },
-                    error: function (jqXHR, textStatus, errorThrown) 
-                    {
-                        alert("erro");
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert("Favor preencher todos os campos");
                     },
                     success: function (data) {
                         if (data != null) {
-                            alert("sucesso");
+                            alert("Reserva incluída com sucesso");
                         }
                     }
                 });
             }
         </script>
+
+
     </div>
 </div>
 
