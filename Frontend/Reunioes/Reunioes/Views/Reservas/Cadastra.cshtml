@@ -9,15 +9,15 @@
     <h2>@ViewBag.Message</h2>
 </hgroup>
 
-<div data-ng-app="PagInicial">
-    <div data-ng-controller="ReservasController">     
+<div ng-app="PagInicial">
+    <div ng-controller="ReservasController">
 
         <li>
             <output>Filial:</output>
             <select>
                 @foreach (var filial in Model.filiais)
                 {
-                    <option id=@filial.id_filial value="nm_filial">@filial.nm_filial</option>
+                    <option id=id_filial value=@filial.id_filial>@filial.nm_filial</option>
                     <!--More properties-->
                 }
             </select>
@@ -52,24 +52,53 @@
         </li>
         <li>
             <output>Café?</output>
-            <input type="checkbox" name="dv_cafe">
+            <input type="checkbox" name="dv_cafe" id="dv_cafe">
         </li>
         <li>
             <output>Quantidade:</output>
-            <input type="number" name="qt_cafe">
+            <input type="number" name="qt_cafe" id="qt_cafe">
         </li>
         <li>
             <output>Descrição:</output>
-            <input type="text" name="descricao">
+            <input type="text" name="descricao" id="descricao">
         </li>
         <form class="form-inline" name="cadReserva" align="center">
             <form>
-                <div data-ng-app="PagInicial">
-                    <div data-ng-controller="ReservasController">
-                        <button data-ng-click="function1('AngularJS')">Call first function</button>
+                <div ng-app="PagInicial">
+                    <div ng-controller="ReservasController">
+                        <input type="button"
+                            value="Cadastrar Nova Reserva"
+                            onclick="cadastra(descricao.value, qt_cafe.value, dv_cafe.checked, id_filial)" />
                     </div>
                 </div>
             </form>
         </form>
+
+        <script>
+            function cadastra(desc, qtc, dvc, idfil) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Reservas/PostReserva",
+                    dataType: 'text',
+                    data: {
+                        descricao: desc,
+                        qt_cafe: qtc,
+                        dv_cafe: dvc,
+                        id_filial: idfil
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) 
+                    {
+                        alert("erro");
+                    },
+                    success: function (data) {
+                        if (data != null) {
+                            alert("sucesso");
+                        }
+                    }
+                });
+            }
+        </script>
     </div>
 </div>
+

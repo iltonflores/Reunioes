@@ -45,5 +45,17 @@ namespace MvcApplication1.Controllers
             return View(combos);
         }
 
+        public void PostReserva(String descricao, Int16 qt_cafe, Boolean dv_cafe, String id_filial)
+        {
+            String desc = descricao;
+           // String json = JsonConvert.SerializeObject(cliente);
+
+         //   Utils utils = new Utils();
+
+            //   String retornostr = utils.PostWebService("http://localhost:56123/Servicos.svc/postReserva", json);
+
+         //   Retorno retorno = JsonConvert.DeserializeObject<Retorno>(retornostr);
+        }
+
     }
 }

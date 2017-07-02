@@ -181,6 +181,8 @@
     <Compile Include="Tabelas\Endereco.cs" />
     <Compile Include="Tabelas\Filial.cs" />
     <Compile Include="Tabelas\Reserva.cs" />
+    <Compile Include="Tabelas\Retorno.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="ViewModels\CombosViewModel.cs" />
     <Compile Include="ViewModels\ResponsaveisViewModel.cs" />
     <Compile Include="ViewModels\FiliaisViewModel.cs" />
@@ -274,7 +276,6 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\teste.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -1040,8 +1041,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="teste.js" />
-    <Content Include="Views\Reservas\teste.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1097,6 +1096,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Reservas\Cadastra.cshtml" />
+    <Content Include="Views\Reservas\PostReserva.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
