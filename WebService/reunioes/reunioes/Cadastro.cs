@@ -235,25 +235,39 @@ namespace reunioes
                 }
                 else
                 {
-                    CadastroBancoDados banco = new CadastroBancoDados();
+                    Consulta conGetReservas = new Consulta();
 
-                    SqlConnection conexao = banco.abrirConexao();
+                    List<Reserva> reservasintervalo = conGetReservas.GetReservasIntervalo(reserva.id_reserva, reserva.dt_inicio, reserva.dt_fim, reserva.id_sala, reserva.id_filial);
 
-                    if (reserva.id_reserva.ToString().Equals("00000000-0000-0000-0000-000000000000"))
+                    if (reservasintervalo.Count == 0)
                     {
-                        retorno.guid = banco.SqlCommandInsereReserva(conexao, reserva);
-                        retorno.CodigoRetorno = 1;
-                        retorno.DescricaoRetorno = "Reserva inserida";
+                        CadastroBancoDados banco = new CadastroBancoDados();
+
+                        SqlConnection conexao = banco.abrirConexao();
+
+                        if (reserva.id_reserva.ToString().Equals("00000000-0000-0000-0000-000000000000"))
+                        {
+                            retorno.guid = banco.SqlCommandInsereReserva(conexao, reserva);
+                            retorno.CodigoRetorno = 1;
+                            retorno.DescricaoRetorno = "Reserva inserida";
+                        }
+                        else
+                        {
+                            banco.SqlCommandAtualizaReserva(conexao, reserva);
+                            retorno.guid = reserva.id_reserva;
+                            retorno.CodigoRetorno = 1;
+                            retorno.DescricaoRetorno = "Reserva atualizada";
+                        }
+
+                        banco.fecharConexao(conexao);
                     }
                     else
                     {
-                        banco.SqlCommandAtualizaReserva(conexao, reserva);
-                        retorno.guid = reserva.id_reserva;
-                        retorno.CodigoRetorno = 1;
-                        retorno.DescricaoRetorno = "Reserva atualizada";
+                        Retorno retornoint = new Retorno();
+                        retornoint.CodigoRetorno = 0;
+                        retornoint.DescricaoRetorno = "Já existe reunião para o horário solicitado";
+                        return retornoint;
                     }
-
-                    banco.fecharConexao(conexao);
                 }
                 return retorno;
             }

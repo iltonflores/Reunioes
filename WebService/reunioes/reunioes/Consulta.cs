@@ -143,6 +143,33 @@ namespace reunioes
 
         }
 
+        public List<Reserva> GetReservasIntervalo(Guid id_reserva, DateTime dt_inicio, DateTime dt_fim, Guid id_sala, Guid id_filial)
+        {
+            List<Reserva> reservas = new List<Reserva>();
+            try
+            {
+                ConsultaBancoDados banco = new ConsultaBancoDados();
+
+                SqlConnection conexao = banco.abrirConexao();
+
+                reservas = banco.SqlCommandConsultaReservaIntervalo(conexao, id_reserva, dt_inicio, dt_fim, id_sala, id_filial);
+
+                banco.fecharConexao(conexao);
+                return reservas;
+            }
+            catch (Exception error)
+            {
+
+                Reserva reserva = new Reserva();
+                reserva.id_reserva = new Guid();
+                reserva.nm_descricao = "Ocorreu o erro:" + error.Message;
+                reservas.Add(reserva);
+
+                return reservas;
+            }
+
+        }
+
         public List<ReservaTextoLista> GetReservasTextoLista(Guid id_reserva, DateTime dt_inicio, DateTime dt_fim, Guid id_sala, Guid id_filial)
         {
             List<ReservaTextoLista> reservas = new List<ReservaTextoLista>();

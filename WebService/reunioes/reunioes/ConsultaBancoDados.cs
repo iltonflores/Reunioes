@@ -438,6 +438,79 @@ namespace reunioes
             }
         }
 
+        public List<Reserva> SqlCommandConsultaReservaIntervalo(SqlConnection conexao, Guid id_reserva, DateTime dt_inicio, DateTime dt_fim, Guid id_sala, Guid id_filial)
+        {
+            SqlDataReader reader = null;
+
+            List<Reserva> reservas = new List<Reserva>();
+            try
+            {
+
+                SqlCommand comando = new SqlCommand(null, conexao);
+
+                comando.CommandText = "SELECT * FROM Reserva "+
+                                      "WHERE (@dt_inicio between dt_inicio and dt_fim OR " +
+                                       "@dt_fim between dt_inicio and dt_fim OR " +
+                                       "(@dt_inicio < dt_inicio AND " +
+                                       "@dt_fim > dt_fim))";
+
+                SqlParameter parametro_inicio = new SqlParameter();
+                parametro_inicio.ParameterName = "@dt_inicio";
+                parametro_inicio.Value = dt_inicio;
+
+                comando.Parameters.Add(parametro_inicio);
+
+                SqlParameter parametro_fim = new SqlParameter();
+                parametro_fim.ParameterName = "@dt_fim";
+                parametro_fim.Value = dt_fim;
+
+                comando.Parameters.Add(parametro_fim);
+
+                comando = SqlAddParametro(conexao, comando, id_reserva, "id_reserva");
+                comando = SqlAddParametro(conexao, comando, id_sala, "id_sala");
+                comando = SqlAddParametro(conexao, comando, id_filial, "id_filial");
+
+                reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Reserva reserva = new Reserva();
+
+                    reserva.id_reserva = reader.GetGuid(reader.GetOrdinal("id_reserva"));
+                    reserva.id_filial = reader.GetGuid(reader.GetOrdinal("id_filial"));
+                    reserva.id_sala = reader.GetGuid(reader.GetOrdinal("id_sala"));
+                    reserva.dt_inicio = Convert.ToDateTime(reader["dt_inicio"].ToString());
+                    reserva.dt_fim = Convert.ToDateTime(reader["dt_fim"].ToString());
+                    reserva.id_responsavel = reader.GetGuid(reader.GetOrdinal("id_responsavel"));
+                    reserva.dv_cafe = Convert.ToBoolean(reader["dv_cafe"].ToString());
+                    reserva.qt_cafe = Convert.ToInt16(reader["qt_cafe"].ToString());
+                    reserva.nm_descricao = reader["nm_descricao"].ToString();
+                    reservas.Add(reserva);
+                }
+
+                return reservas;
+
+            }
+            catch (Exception e)
+            {
+                Reserva reserva = new Reserva();
+                reserva.id_reserva = new Guid();
+                reserva.nm_descricao = "Ocorreu o erro:" + e.Message;
+                reservas.Add(reserva);
+
+                return reservas;
+            }
+            finally
+            {
+                // close reader
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+        }
+
         public List<ReservaTextoLista> SqlCommandConsultaReservaTextoLista(SqlConnection conexao, Guid id_reserva, DateTime dt_inicio, DateTime dt_fim, Guid id_sala, Guid id_filial)
         {
             SqlDataReader reader = null;
