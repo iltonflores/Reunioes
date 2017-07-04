@@ -13,6 +13,7 @@ namespace MvcApplication1.Controllers
     {
         //
         // GET: /Reservas/
+        Guid id_reserva_altera;
 
         public ActionResult Listagem()
         {
@@ -78,6 +79,37 @@ namespace MvcApplication1.Controllers
             Retorno retorno = JsonConvert.DeserializeObject<Retorno>(retornostr);
 
             return retorno.DescricaoRetorno;
+        }
+
+        public ActionResult AlteraReserva(String id_reserva)
+        {
+            if (!String.IsNullOrEmpty(id_reserva))
+            {
+                id_reserva_altera = new Guid(id_reserva);
+            }
+
+            WebClient wc = new WebClient();
+
+            EditaReservaCombosViewModel combos = new EditaReservaCombosViewModel();
+
+            var json = wc.DownloadString("http://localhost:56123/Servicos.svc/getSalas");
+            SalasViewModel salas = JsonConvert.DeserializeObject<SalasViewModel>(json);
+
+            json = wc.DownloadString("http://localhost:56123/Servicos.svc/getFiliais");
+            FiliaisViewModel filiais = JsonConvert.DeserializeObject<FiliaisViewModel>(json);
+
+            json = wc.DownloadString("http://localhost:56123/Servicos.svc/getResponsaveis");
+            ResponsaveisViewModel responsaveis = JsonConvert.DeserializeObject<ResponsaveisViewModel>(json);
+
+            json = wc.DownloadString("http://localhost:56123/Servicos.svc/getReservas");
+            ReservasViewModel reservas = JsonConvert.DeserializeObject<ReservasViewModel>(json);
+
+            combos.salas = salas.salas;
+            combos.filiais = filiais.filiais;
+            combos.responsaveis = responsaveis.responsaveis;
+            combos.reservas = reservas.reservas;
+
+            return View(combos);
         }
 
     }

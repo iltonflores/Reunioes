@@ -1,0 +1,109 @@
+﻿@model MvcApplication1.EditaReservaCombosViewModel
+
+@{
+    ViewBag.Title = "Cadastro de Reservas";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<div ng-app="PagInicial">
+    <div ng-controller="ReservasController">
+
+        <li>
+            <output>Filial:</output>
+            <select id=id_filial>
+                @foreach (var filial in Model.filiais)
+                {
+                    <option value=@filial.id_filial>@filial.nm_filial </option>
+                    <!--More properties-->
+                }
+            </select>
+        </li>
+        <li>
+            <output>Sala:</output>
+            <select id=id_sala>
+                @foreach (var sala in Model.salas)
+                {
+                    <option value="@sala.id_sala">@sala.nm_sala</option>
+                    <!--More properties-->
+                }
+            </select>
+        </li>
+        <li>
+            <output>Data de início:</output>
+            <input type="datetime-local" name="dt_inicio" id="dt_inicio">
+        </li>
+        <li>
+            <output>Data de encerramento:</output>
+            <input type="datetime-local" name="dt_fim"  id="dt_fim">
+        </li>
+        <li>
+            <output>Responsável:</output>
+            <select id=id_responsavel>
+                @foreach (var responsavel in Model.responsaveis)
+                {
+                    <option value="@responsavel.id_responsavel">@responsavel.nm_responsavel</option>
+                    <!--More properties-->
+                }
+            </select>
+        </li>
+        <li>
+            <output>Café?</output>
+            <input type="checkbox" name="dv_cafe" id="dv_cafe">
+        </li>
+        <li>
+            <output>Quantidade:</output>
+            <input type="number" name="qt_cafe" id="qt_cafe">
+        </li>
+        <li>
+            <output>Descrição:</output>
+            <input type="text" name="descricao" id="descricao">
+        </li>
+        <form class="form-inline" name="cadReserva" align="center">
+            <form>
+                <div ng-app="PagInicial">
+                    <div ng-controller="ReservasController">
+                        <input type="button"
+                            value="Cadastrar Nova Reserva"
+                            onclick="cadastra(descricao.value, qt_cafe.value, dv_cafe.checked, id_filial.value, id_sala.value, id_responsavel.value, dt_inicio.value, dt_fim.value)" />
+                    </div>
+                </div>
+            </form>
+        </form>
+
+        <script>
+            function cadastra(desc, qtc, dvc, idfil, idsal, idres, dtini, dtfim) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Reservas/PostReserva",
+                    dataType: 'text',
+                    data: {
+                        descricao: desc,
+                        qt_cafe: qtc,
+                        dv_cafe: dvc,
+                        id_filial: idfil,
+                        id_sala: idsal,
+                        id_responsavel: idres,
+                        dt_inicio: dtini,
+                        dt_fim: dtfim
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert("Favor preencher todos os campos");
+                    },
+                    success: function (data) {
+                        if (data != null) {
+                            alert("Reserva incluída com sucesso");
+                        }
+                    }
+                });
+            }
+        </script>
+
+
+    </div>
+</div>
+

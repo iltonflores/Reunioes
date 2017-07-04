@@ -184,6 +184,7 @@
     <Compile Include="Tabelas\Retorno.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ViewModels\CombosViewModel.cs" />
+    <Compile Include="ViewModels\EditaReservaCombosViewModel.cs" />
     <Compile Include="ViewModels\ResponsaveisViewModel.cs" />
     <Compile Include="ViewModels\FiliaisViewModel.cs" />
     <Compile Include="ViewModels\SalasViewModel.cs" />
@@ -1097,6 +1098,7 @@
     </None>
     <Content Include="Views\Reservas\Cadastra.cshtml" />
     <Content Include="Views\Reservas\PostReserva.cshtml" />
+    <Content Include="Views\Reservas\AlteraReserva.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

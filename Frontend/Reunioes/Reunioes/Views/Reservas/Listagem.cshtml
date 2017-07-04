@@ -21,6 +21,7 @@
                     <th>Data de encerramento</th>
                     <th>Responsável</th>
                     <th>Descrição</th>
+
                     <!--More column headings-->
                 </tr>
             </thead>
@@ -34,6 +35,16 @@
                         <td>@reserva.dt_fim</td>
                         <td>@reserva.nm_responsavel</td>
                         <td>@reserva.nm_descricao</td>
+                        <td>
+                            <input type="button"
+                                value="Editar" 
+                                onclick=carrega('@reserva.id_reserva') />
+                        </td>
+                        <td>
+                            <input type="button"
+                                value="Excluir"
+                                onclick="self.location = '/Reservas/Cadastra'">
+                        </td>
                         <!--More properties-->
                     </tr>
                 }
@@ -64,5 +75,28 @@
                     onclick="self.location = '/Reservas/Cadastra'">
             </form>
         </form>
+
+        <script>
+            function carrega(id_res) {
+                
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Reservas/AlteraReserva",
+                    dataType: 'text',
+                    location : '/Reservas/AlteraReserva',
+                    data: {
+                        id_reserva: id_res
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                    },
+                    success: function (data) {
+                        if (data != null) {
+                            
+                        }
+                    }
+                });
+            }
+        </script>
     </div>
 </div>
